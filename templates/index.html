@@ -1,0 +1,47 @@
+<html>
+	<title>Voice </title>
+	<head>
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+		<link href="static/main.css" rel="stylesheet">
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	</head>
+	<body>
+		<form class="form-horizontal">
+		<legend> Create Call </legend>
+		<div class="control-group">
+			<label class="control-label"> Message </label>
+			<div class="controls">
+				<textarea rows=4 placeholder="Your message here"></textarea>
+			</div>
+		</div>
+
+
+		<div class="control-group">
+    			<label class="control-label">Number</label>
+    			<div class="controls">
+				<input type="phone" id="phonenumber" placeholder="Phone number">
+				<button type="submit" class="btn">Call</button>
+			</div>
+    		</div>
+
+		</form>
+				
+	</div>
+	<script>
+		/*$(document).ready(function(){
+			for(i=0;i<5;i++){
+			$('form').append("<div class='control-group'>" +
+				"<label class='control-label'>Number</label>"+"<div class='controls'>"+
+					"<input type='phone' id='phonenumber' placeholder='Phone number'>");
+				}
+
+		});*/
+		
+		$('button').click(function(){
+			$.getJSON('/call',{number:$('input#phonenumber').val(),message:$('textarea').val()},function(data){
+					alert("Call fired");
+				});
+		});
+	</script>
+</body>
+</html>
